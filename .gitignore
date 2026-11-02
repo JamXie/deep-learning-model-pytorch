@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# 数据与输出：由脚本生成，不入库
+outputs/
+data/mnist/
+data/moving_mnist/
+*.pt
+*.pth
+*.pkl
+*.ckpt
+*.xlsx
+*.gif
+*.pptx
+*.docx
+*.png
+*.jpg
+
+# 放行仓库自带的少量示例数据与文档图片
+!data/crashworthiness/*.csv
+!docs/assets/*.png

@@ -1,0 +1,48 @@
+Third-party references and attribution
+======================================
+
+This repository contains original example code written for study purposes.
+Some examples follow ideas, tutorials or model architectures published by
+others. No upstream source code, dataset or pretrained weight is
+redistributed here; the implementations were written or reworked for this
+repository.
+
+PixelCNN
+--------
+`examples/mnist_generative/pixelcnn_mnist.py` follows the masked-convolution
+idea introduced by van den Oord et al., "Conditional Image Generation with
+PixelCNN Decoders" (arXiv:1606.05328), and the public PyTorch implementation
+jzbontar/pixelcnn-pytorch (MIT License) was used as a design reference.
+The implementation here was rewritten; see the upstream repository for its
+license:
+https://github.com/jzbontar/pixelcnn-pytorch
+
+Diffusion model
+---------------
+`examples/mnist_generative/mnist_diffusion.py` follows the DDPM formulation
+(Ho et al., "Denoising Diffusion Probabilistic Models", arXiv:2006.11239).
+The U-Net is written in this repository for demonstration purposes.
+
+VQ-VAE
+------
+`examples/mnist_generative/vqvae_mnist.py` follows van den Oord et al.,
+"Neural Discrete Representation Learning" (arXiv:1711.00937). The
+implementation was rewritten from the paper and from public educational
+material (including d2l.ai).
+
+DeepONet / PINN / PINO
+----------------------
+The scientific-ML examples follow:
+  - Lu et al., "DeepONet: Learning nonlinear operators ..." (arXiv:1910.03193)
+  - Raissi et al., "Physics-informed neural networks" (arXiv:1711.10561)
+  - Li et al., "Physics-Informed Neural Operator for Learning Partial
+    Differential Equations" (arXiv:2111.03794)
+
+The vendored DeepXDE source tree that accompanied the original study
+workspace is not redistributed. DeepXDE is licensed under the LGPL-2.1; see
+https://github.com/lululxvi/deepxde for the original project.
+
+Crashworthiness data
+--------------------
+`data/crashworthiness/result_1ct_oblique_load.csv` is a small tabular result
+exported from the author's own finite-element simulation.
