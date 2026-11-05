@@ -9,7 +9,7 @@ repository.
 
 PixelCNN
 --------
-`examples/mnist_generative/pixelcnn_mnist.py` follows the masked-convolution
+`examples/pixelcnn/train.py` follows the masked-convolution
 idea introduced by van den Oord et al., "Conditional Image Generation with
 PixelCNN Decoders" (arXiv:1606.05328), and the public PyTorch implementation
 jzbontar/pixelcnn-pytorch (MIT License) was used as a design reference.
@@ -19,13 +19,13 @@ https://github.com/jzbontar/pixelcnn-pytorch
 
 Diffusion model
 ---------------
-`examples/mnist_generative/mnist_diffusion.py` follows the DDPM formulation
+`examples/diffusion/train.py` follows the DDPM formulation
 (Ho et al., "Denoising Diffusion Probabilistic Models", arXiv:2006.11239).
 The U-Net is written in this repository for demonstration purposes.
 
 VQ-VAE
 ------
-`examples/mnist_generative/vqvae_mnist.py` follows van den Oord et al.,
+`examples/vqvae/train.py` follows van den Oord et al.,
 "Neural Discrete Representation Learning" (arXiv:1711.00937). The
 implementation was rewritten from the paper and from public educational
 material (including d2l.ai).

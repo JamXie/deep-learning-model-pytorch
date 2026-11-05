@@ -7,8 +7,8 @@
   - 推理时用 5 帧历史自回归生成后续帧；
   - 默认 d_model=128、nhead=4、num_layers=2、历史 5 帧、预测 5 帧。
 
-运行方式（在仓库根目录，先运行 generate_moving_mnist.py）：
-    python -m examples.temporal_transformer.temporal_transformer --epochs 10
+运行方式（在仓库根目录，先运行 examples.moving_mnist.generate）：
+    python -m examples.transformer.train --epochs 10
 """
 
 from __future__ import annotations
@@ -119,7 +119,7 @@ def load_sequences(data_path: Path) -> torch.Tensor:
     if not data_path.exists():
         raise FileNotFoundError(
             f"未找到 {data_path}，请先运行：\n"
-            "  python -m examples.temporal_transformer.generate_moving_mnist"
+            "  python -m examples.moving_mnist.generate"
         )
     data = torch.load(data_path, map_location="cpu")
     return data["sequences"].float()
@@ -160,7 +160,7 @@ def main(argv: list[str] | None = None) -> None:
 
     set_seed(args.seed)
     device = get_device(args.device)
-    output_dir = resolve_output_dir(args.output_dir, "temporal_transformer")
+    output_dir = resolve_output_dir(args.output_dir, "transformer")
 
     data_path = (
         Path(args.data_file).expanduser()

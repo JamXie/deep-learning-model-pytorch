@@ -11,23 +11,18 @@ figures/checkpoints to an ignored `outputs/` directory.
 
 ## What is inside
 
-| Family | Models | Task | Entry point |
+| Group | Examples | Task | Entry point |
 | --- | --- | --- | --- |
-| Tabular regression | ANN, GRNN, RBF network, RBF / griddata interpolation | Crashworthiness performance from 6 structural parameters | `examples/tabular_regression` |
+| Tabular regression | ANN, GRNN, RBF network | Crashworthiness performance from 6 structural parameters | `examples/ann`, `examples/grnn`, `examples/rbf_network` |
+| Interpolation baselines | RBF / griddata | Non-parametric baselines on the same data | `examples/interpolation` |
 | Gaussian processes | GP regression (fixed / optimized hyperparameters, observation noise) | 1-D `cos(x)` regression with confidence bands | `examples/gpr` |
-| Generative models | Simplified diffusion U-Net, masked-convolution PixelCNN, VQ-VAE | MNIST reconstruction / sampling | `examples/mnist_generative` |
-| Sequence model | Frame-level encoder–decoder Transformer | Moving-MNIST next-frame prediction | `examples/temporal_transformer` |
+| Generative models | Simplified diffusion U-Net, masked-convolution PixelCNN, VQ-VAE | MNIST reconstruction / sampling | `examples/diffusion`, `examples/pixelcnn`, `examples/vqvae` |
+| Sequence models | Moving-MNIST generator, frame-level Transformer | Moving-MNIST next-frame prediction | `examples/moving_mnist`, `examples/transformer` |
 | Operator learning | DeepONet + FNN baseline | 1-D integral, 2-D forced pendulum, 1-D diffusion | `examples/deeponet` |
 | Scientific ML | PINNs (strong / energy form), collision operator, PINO fine-tuning | Crash-response prediction of a spring–mass system | `examples/sciml_crash` |
 
-Each family has its own README with details and commands:
-
-- [examples/tabular_regression/README.md](examples/tabular_regression/README.md)
-- [examples/gpr/README.md](examples/gpr/README.md)
-- [examples/mnist_generative/README.md](examples/mnist_generative/README.md)
-- [examples/temporal_transformer/README.md](examples/temporal_transformer/README.md)
-- [examples/deeponet/README.md](examples/deeponet/README.md)
-- [examples/sciml_crash/README.md](examples/sciml_crash/README.md)
+Start with the [model index](examples/README.md) or the
+[learning path](docs/LEARNING_PATH.md). Every model directory has its own README.
 
 ![PINN bilinear-spring result](docs/assets/pinns_bilinear.png)
 
@@ -56,11 +51,11 @@ pandas 1.5, scikit-learn 1.7 and matplotlib 3.7.
 Run everything as a module from the repository root:
 
 ```bash
-python -m examples.tabular_regression.ann --epochs 300
+python -m examples.ann.train --epochs 300
 python -m examples.gpr.gpr_basic
-python -m examples.mnist_generative.mnist_diffusion --epochs 5
-python -m examples.temporal_transformer.generate_moving_mnist --num-samples 600
-python -m examples.temporal_transformer.temporal_transformer --epochs 10
+python -m examples.diffusion.train --epochs 5
+python -m examples.moving_mnist.generate --num-samples 600
+python -m examples.transformer.train --epochs 10
 python -m examples.deeponet.data_build.build_1d_integral --num-train 2000 --num-val 500
 python -m examples.deeponet.train --task 1d --epochs 200
 python -m examples.sciml_crash.pinns.case_linear --iters 5000
@@ -86,8 +81,9 @@ and expected files.
 ```text
 common/          shared seed / device / path / plotting / CLI helpers
 data/            the single committed CSV (+ README describing all data)
-examples/        one directory per family, each with a README
-docs/            data, reproducibility and fix notes; three sample figures
+examples/        one directory per model, plus DeepONet / SciML projects;
+                 see examples/README.md for the index
+docs/            learning path, reproducibility and fix notes; three sample figures
 tests/           CPU-only smoke tests (no downloads, no training)
 ```
 
@@ -98,12 +94,12 @@ tests/           CPU-only smoke tests (no downloads, no training)
   Column descriptions are in [data/README.md](data/README.md).
 - MNIST is downloaded automatically by `torchvision` into `data/mnist/`.
 - Moving MNIST is generated into `data/moving_mnist/` by
-  `examples/temporal_transformer/generate_moving_mnist.py`.
+  `examples/moving_mnist/generate.py`.
 - DeepONet datasets (`.xlsx`) and SciML datasets (`.pkl`) are generated under
   `outputs/`; model checkpoints and figures go there too.
 
 `data/mnist/`, `data/moving_mnist/` and `outputs/` are git-ignored. The full data
-contract is documented in [docs/DATA.md](docs/DATA.md).
+contract is documented in [data/README.md](data/README.md).
 
 ## Tests
 

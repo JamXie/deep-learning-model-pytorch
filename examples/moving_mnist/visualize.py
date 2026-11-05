@@ -1,7 +1,7 @@
 """把一条 Moving MNIST 序列的所有帧拼成网格图保存。
 
-运行方式（在仓库根目录，先运行 generate_moving_mnist.py）：
-    python -m examples.temporal_transformer.visualize_moving_mnist --index 0
+运行方式（在仓库根目录，先运行 examples.moving_mnist.generate）：
+    python -m examples.moving_mnist.visualize --index 0
 """
 
 from __future__ import annotations
@@ -33,7 +33,7 @@ def main(argv: list[str] | None = None) -> None:
     if not data_path.exists():
         raise FileNotFoundError(
             f"未找到 {data_path}，请先运行：\n"
-            "  python -m examples.temporal_transformer.generate_moving_mnist"
+            "  python -m examples.moving_mnist.generate"
         )
 
     data = torch.load(data_path, map_location="cpu")
@@ -50,7 +50,7 @@ def main(argv: list[str] | None = None) -> None:
         ax.set_title(f"t={t}")
         ax.axis("off")
     fig.suptitle(f"sample {args.index} / {len(sequences)}")
-    output_dir = resolve_output_dir(args.output_dir, "temporal_transformer")
+    output_dir = resolve_output_dir(args.output_dir, "moving_mnist")
     save_figure(fig, output_dir / f"moving_mnist_sample_{args.index}.png")
     print(f"Saved preview to {output_dir}")
 

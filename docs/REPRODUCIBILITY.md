@@ -34,11 +34,11 @@ python -m pytest
 ## 2. 经典示例冒烟
 
 ```bash
-python -m examples.tabular_regression.ann --epochs 1 --limit-batches 1 --output-dir outputs/smoke/tabular
-python -m examples.tabular_regression.grnn --output-dir outputs/smoke/tabular
-python -m examples.tabular_regression.rbf_network --epochs 1 --limit-batches 1 --output-dir outputs/smoke/tabular
-python -m examples.tabular_regression.interpolation_rbf --output-dir outputs/smoke/tabular
-python -m examples.tabular_regression.interpolation_griddata --output-dir outputs/smoke/tabular
+python -m examples.ann.train --epochs 1 --limit-batches 1 --output-dir outputs/smoke/tabular
+python -m examples.grnn.run --output-dir outputs/smoke/tabular
+python -m examples.rbf_network.train --epochs 1 --limit-batches 1 --output-dir outputs/smoke/tabular
+python -m examples.interpolation.rbf --output-dir outputs/smoke/tabular
+python -m examples.interpolation.griddata --output-dir outputs/smoke/tabular
 
 python -m examples.gpr.gpr_basic --output-dir outputs/smoke/gpr
 python -m examples.gpr.gpr_hyperparameters --output-dir outputs/smoke/gpr
@@ -54,9 +54,9 @@ python -m examples.gpr.gpr_uncertain_inputs --output-dir outputs/smoke/gpr
 首次运行会从 `torchvision` 下载 MNIST：
 
 ```bash
-python -m examples.mnist_generative.mnist_diffusion --epochs 1 --limit-batches 2 --output-dir outputs/smoke/gen
-python -m examples.mnist_generative.pixelcnn_mnist --epochs 1 --limit-batches 2 --output-dir outputs/smoke/gen
-python -m examples.mnist_generative.vqvae_mnist --epochs 1 --limit-batches 2 --output-dir outputs/smoke/gen
+python -m examples.diffusion.train --epochs 1 --limit-batches 2 --output-dir outputs/smoke/gen
+python -m examples.pixelcnn.train --epochs 1 --limit-batches 2 --output-dir outputs/smoke/gen
+python -m examples.vqvae.train --epochs 1 --limit-batches 2 --output-dir outputs/smoke/gen
 ```
 
 预期：`diffusion_loss.png` / `diffusion_samples.png` / `diffusion_unet.pt`，
@@ -66,9 +66,9 @@ python -m examples.mnist_generative.vqvae_mnist --epochs 1 --limit-batches 2 --o
 Moving MNIST 与 Transformer：
 
 ```bash
-python -m examples.temporal_transformer.generate_moving_mnist --num-samples 8 --output outputs/smoke/moving_mnist.pt
-python -m examples.temporal_transformer.visualize_moving_mnist --data-file outputs/smoke/moving_mnist.pt --index 0 --output-dir outputs/smoke/transformer
-python -m examples.temporal_transformer.temporal_transformer --data-file outputs/smoke/moving_mnist.pt --epochs 1 --limit-batches 1 --output-dir outputs/smoke/transformer
+python -m examples.moving_mnist.generate --num-samples 8 --output outputs/smoke/moving_mnist.pt
+python -m examples.moving_mnist.visualize --data-file outputs/smoke/moving_mnist.pt --index 0 --output-dir outputs/smoke/transformer
+python -m examples.transformer.train --data-file outputs/smoke/moving_mnist.pt --epochs 1 --limit-batches 1 --output-dir outputs/smoke/transformer
 ```
 
 预期：`moving_mnist_sample_0.png`、`transformer_loss.png`、

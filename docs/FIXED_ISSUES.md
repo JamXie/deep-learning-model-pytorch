@@ -19,7 +19,7 @@ xlsx/csv/pptx/png/gif、DeepXDE 残缺副本等均未纳入本仓库。
 | `RBF/RBFNet.py` | 验证阶段张量未随模型迁移 | 同 ANN |
 | `FP(griddata).py` | 查询点落在凸包外时 `griddata` 返回 NaN，导致 R² 为 NaN | 计算指标前 `np.nan_to_num`，并在文档中说明 nearest 基线的含义 |
 | `FP(RBF).py` | 脚本级代码，无法复用 | 包进 `main()` + argparse，导入无副作用 |
-| 数据读取 | 原工程散落在多处、依赖本机路径与硬编码编码 | 统一到 `load_crash_data.py`：编码回退、固定列、`random_state=42` |
+| 数据读取 | 原工程散落在多处、依赖本机路径与硬编码编码 | 统一到 `examples/_shared/crash_data.py`：编码回退、固定列、`random_state=42` |
 
 ## 2. 高斯过程回归
 

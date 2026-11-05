@@ -5,16 +5,16 @@ from __future__ import annotations
 import numpy as np
 import torch
 
-from examples.tabular_regression.ann import ANN
-from examples.tabular_regression.grnn import GRNN
-from examples.tabular_regression.load_crash_data import (
+from examples._shared.crash_data import (
     INPUT_COLUMNS,
     OUTPUT_COLUMNS,
     load_crash_frame,
     normalize_frame,
     split_dataset,
 )
-from examples.tabular_regression.rbf_network import RBFNet
+from examples.ann.train import ANN
+from examples.grnn.run import GRNN
+from examples.rbf_network.train import RBFNet
 
 
 def test_load_crash_frame():

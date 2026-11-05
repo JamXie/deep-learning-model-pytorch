@@ -6,7 +6,7 @@
   - 训练目标为重建 MNIST 图像（MSE）。
 
 运行方式（在仓库根目录，首次运行会自动下载 MNIST）：
-    python -m examples.mnist_generative.pixelcnn_mnist --epochs 5
+    python -m examples.pixelcnn.train --epochs 5
 """
 
 from __future__ import annotations
@@ -121,7 +121,7 @@ def main(argv: list[str] | None = None) -> None:
 
     set_seed(args.seed)
     device = get_device(args.device)
-    output_dir = resolve_output_dir(args.output_dir, "mnist_generative")
+    output_dir = resolve_output_dir(args.output_dir, "pixelcnn")
     data_root = Path(args.data_root).expanduser() if args.data_root else resolve_data_path("mnist")
 
     train_loader, val_loader, _ = build_loaders(data_root, args.batch_size)

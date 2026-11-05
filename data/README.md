@@ -5,8 +5,8 @@
 ## 1. `crashworthiness/result_1ct_oblique_load.csv`
 
 1CT 矩形薄壁梁斜向压溃的有限元仿真结果，**600 行 × 11 列**，原始编码为
-GB2312。读取函数位于 `examples/tabular_regression/load_crash_data.py`，会依次
-尝试 `gb2312 → gb18030 → utf-8`。
+GB2312。读取函数位于 `examples/_shared/crash_data.py`，会依次尝试
+`gb2312 → gb18030 → utf-8`。
 
 | 列名 | 角色 | 含义 |
 | --- | --- | --- |
@@ -23,20 +23,21 @@ GB2312。读取函数位于 `examples/tabular_regression/load_crash_data.py`，�
 | `SpecificEnergyAbsorption` | 输出 | 比吸能 |
 
 数值单位沿用原始仿真导出，本仓库不做单位换算。表格回归示例按
-`load_crash_data.py` 中固定的 `INPUT_RANGES` / `OUTPUT_RANGES` 做 Min-Max
-归一化，并用 `random_state=42` 按 80/20 划分训练集与验证集。数据来源与许可见根目录
-`NOTICE`。
+`examples/_shared/crash_data.py` 中固定的 `INPUT_RANGES` / `OUTPUT_RANGES` 做
+Min-Max 归一化，并用 `random_state=42` 按 80/20 划分训练集与验证集。数据来源与许可
+见根目录 `NOTICE`。
 
 ## 2. MNIST（自动下载，不入库）
 
-`examples/mnist_generative/*` 通过 `torchvision.datasets.MNIST(download=True)`
-把数据下载到 `data/mnist/`。该目录已被 `.gitignore` 排除。图像张量取值
-`[0, 1]`，生成模型在 `[-1, 1]` 与 `[0, 1]` 之间按脚本约定转换（见各脚本注释）。
+`examples/diffusion/`、`examples/pixelcnn/`、`examples/vqvae/` 通过
+`torchvision.datasets.MNIST(download=True)` 把数据下载到 `data/mnist/`。该目录已被
+`.gitignore` 排除。图像张量取值 `[0, 1]`，生成模型在 `[-1, 1]` 与 `[0, 1]` 之间按
+脚本约定转换（见各脚本注释）。
 
 ## 3. Moving MNIST（由脚本生成，不入库）
 
 ```bash
-python -m examples.temporal_transformer.generate_moving_mnist --num-samples 600
+python -m examples.moving_mnist.generate --num-samples 600
 ```
 
 输出默认路径：`data/moving_mnist/moving_mnist_sequences.pt`。固定 schema：

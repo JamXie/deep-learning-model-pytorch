@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import torch
 
-from examples.temporal_transformer.temporal_transformer import TemporalTransformer
+from examples.transformer.train import TemporalTransformer
 
 
 def _small_model() -> TemporalTransformer:

@@ -9,23 +9,18 @@
 
 ## 收录内容
 
-| 系列 | 模型 | 任务 | 入口目录 |
+| 分组 | 示例 | 任务 | 入口目录 |
 | --- | --- | --- | --- |
-| 表格回归 | ANN、GRNN、RBF 网络、RBF / griddata 插值 | 由 6 个结构参数预测压溃性能 | `examples/tabular_regression` |
+| 表格回归 | ANN、GRNN、RBF 网络 | 由 6 个结构参数预测压溃性能 | `examples/ann`、`examples/grnn`、`examples/rbf_network` |
+| 插值基线 | RBF / griddata 插值 | 同一数据上的非参数基线 | `examples/interpolation` |
 | 高斯过程 | GP 回归（固定/优化超参数、观测噪声） | 一维 `cos(x)` 回归与置信带 | `examples/gpr` |
-| 生成模型 | 简化扩散 U-Net、掩码卷积 PixelCNN、VQ-VAE | MNIST 重建 / 采样 | `examples/mnist_generative` |
-| 序列模型 | 帧级编码器-解码器 Transformer | Moving MNIST 后续帧预测 | `examples/temporal_transformer` |
+| 生成模型 | 简化扩散 U-Net、掩码卷积 PixelCNN、VQ-VAE | MNIST 重建 / 采样 | `examples/diffusion`、`examples/pixelcnn`、`examples/vqvae` |
+| 序列模型 | Moving MNIST 生成器、帧级 Transformer | Moving MNIST 后续帧预测 | `examples/moving_mnist`、`examples/transformer` |
 | 算子学习 | DeepONet + FNN 基线 | 一维积分、二维受迫单摆、一维扩散 | `examples/deeponet` |
 | 科学机器学习 | PINNs（强形式/能量形式）、碰撞算子、PINO 微调 | 弹簧-质量系统碰撞响应预测 | `examples/sciml_crash` |
 
-各系列的详细说明与命令：
-
-- [examples/tabular_regression/README.md](examples/tabular_regression/README.md)
-- [examples/gpr/README.md](examples/gpr/README.md)
-- [examples/mnist_generative/README.md](examples/mnist_generative/README.md)
-- [examples/temporal_transformer/README.md](examples/temporal_transformer/README.md)
-- [examples/deeponet/README.md](examples/deeponet/README.md)
-- [examples/sciml_crash/README.md](examples/sciml_crash/README.md)
+建议先看[模型索引](examples/README.md)或[学习路径](docs/LEARNING_PATH.md)；每个模型
+目录都有自己的 README。
 
 ![PINN 双线性弹簧结果](docs/assets/pinns_bilinear.png)
 
@@ -54,11 +49,11 @@ scikit-learn 1.7、matplotlib 3.7 下验证。
 在仓库根目录以模块方式运行：
 
 ```bash
-python -m examples.tabular_regression.ann --epochs 300
+python -m examples.ann.train --epochs 300
 python -m examples.gpr.gpr_basic
-python -m examples.mnist_generative.mnist_diffusion --epochs 5
-python -m examples.temporal_transformer.generate_moving_mnist --num-samples 600
-python -m examples.temporal_transformer.temporal_transformer --epochs 10
+python -m examples.diffusion.train --epochs 5
+python -m examples.moving_mnist.generate --num-samples 600
+python -m examples.transformer.train --epochs 10
 python -m examples.deeponet.data_build.build_1d_integral --num-train 2000 --num-val 500
 python -m examples.deeponet.train --task 1d --epochs 200
 python -m examples.sciml_crash.pinns.case_linear --iters 5000
@@ -83,8 +78,9 @@ python -m examples.sciml_crash.pinns.case_linear --iters 5000
 ```text
 common/          共享的种子 / 设备 / 路径 / 绘图 / CLI 工具
 data/            唯一提交的 CSV，以及说明全部数据格式的 README
-examples/        按系列划分的算例，每个目录都有 README
-docs/            数据、可复现性与修复记录；三张示意图片
+examples/        一个模型一个目录，另有 DeepONet / SciML 工程目录；
+                 索引见 examples/README.md
+docs/            学习路径、可复现性与修复记录；三张示意图片
 tests/           仅用 CPU 的冒烟测试（不下载数据、不训练）
 ```
 
@@ -94,13 +90,13 @@ tests/           仅用 CPU 的冒烟测试（不下载数据、不训练）
   （600 行，GB2312 编码），来自作者自有的有限元仿真；列含义见
   [data/README.md](data/README.md)。
 - MNIST 由 `torchvision` 自动下载到 `data/mnist/`。
-- Moving MNIST 由 `examples/temporal_transformer/generate_moving_mnist.py`
-  生成到 `data/moving_mnist/`。
+- Moving MNIST 由 `examples/moving_mnist/generate.py` 生成到
+  `data/moving_mnist/`。
 - DeepONet 的 `.xlsx` 与 SciML 的 `.pkl` 数据都生成在 `outputs/` 下，权重与图片
   同样写入 `outputs/`。
 
 `data/mnist/`、`data/moving_mnist/` 与 `outputs/` 已被 `.gitignore` 排除。完整的
-数据格式约定见 [docs/DATA.md](docs/DATA.md)。
+数据格式约定见 [data/README.md](data/README.md)。
 
 ## 测试
 

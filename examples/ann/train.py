@@ -1,7 +1,7 @@
 """ANN 回归：由结构参数与加载角度预测压溃性能。
 
 运行方式（在仓库根目录）：
-    python -m examples.tabular_regression.ann --epochs 300
+    python -m examples.ann.train --epochs 300
 """
 
 from __future__ import annotations
@@ -21,7 +21,7 @@ from common.device import get_device
 from common.paths import resolve_output_dir
 from common.plotting import save_figure, use_headless_backend
 from common.seed import set_seed
-from examples.tabular_regression.load_crash_data import (
+from examples._shared.crash_data import (
     load_crash_frame,
     normalize_frame,
     split_dataset,
@@ -75,7 +75,7 @@ def main(argv: list[str] | None = None) -> None:
 
     set_seed(args.seed)
     device = get_device(args.device)
-    output_dir = resolve_output_dir(args.output_dir, "tabular_regression")
+    output_dir = resolve_output_dir(args.output_dir, "ann")
 
     frame = load_crash_frame(data_root=args.data_root)
     x, y = normalize_frame(frame)

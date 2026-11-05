@@ -1,7 +1,7 @@
 """RBF 神经网络：KMeans 初始化高斯核中心，线性输出层可训练。
 
 运行方式（在仓库根目录）：
-    python -m examples.tabular_regression.rbf_network --epochs 500
+    python -m examples.rbf_network.train --epochs 500
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ from common.device import get_device
 from common.paths import resolve_output_dir
 from common.plotting import save_figure, use_headless_backend
 from common.seed import set_seed
-from examples.tabular_regression.load_crash_data import (
+from examples._shared.crash_data import (
     load_crash_frame,
     normalize_frame,
     split_dataset,
@@ -89,7 +89,7 @@ def main(argv: list[str] | None = None) -> None:
 
     set_seed(args.seed)
     device = get_device(args.device)
-    output_dir = resolve_output_dir(args.output_dir, "tabular_regression")
+    output_dir = resolve_output_dir(args.output_dir, "rbf_network")
 
     frame = load_crash_frame(data_root=args.data_root)
     x, y = normalize_frame(frame)

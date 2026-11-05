@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import torch
 
-from examples.mnist_generative.mnist_diffusion import BasicUNet, corrupt
-from examples.mnist_generative.pixelcnn_mnist import MaskedCNN, PixelCNN
-from examples.mnist_generative.vqvae_mnist import VQVAE
+from examples.diffusion.train import BasicUNet, corrupt
+from examples.pixelcnn.train import MaskedCNN, PixelCNN
+from examples.vqvae.train import VQVAE
 
 
 def test_basic_unet_forward_shape():

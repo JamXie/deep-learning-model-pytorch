@@ -11,7 +11,7 @@
     }
 
 运行方式（在仓库根目录）：
-    python -m examples.temporal_transformer.generate_moving_mnist --num-samples 600
+    python -m examples.moving_mnist.generate --num-samples 600
 """
 
 from __future__ import annotations

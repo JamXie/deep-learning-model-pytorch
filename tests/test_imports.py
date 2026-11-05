@@ -13,25 +13,25 @@ MODULES = [
     "common.paths",
     "common.plotting",
     "common.seed",
-    # 表格回归
-    "examples.tabular_regression.ann",
-    "examples.tabular_regression.grnn",
-    "examples.tabular_regression.rbf_network",
-    "examples.tabular_regression.load_crash_data",
-    "examples.tabular_regression.interpolation_rbf",
-    "examples.tabular_regression.interpolation_griddata",
+    # 表格回归与插值
+    "examples._shared.crash_data",
+    "examples.ann.train",
+    "examples.grnn.run",
+    "examples.rbf_network.train",
+    "examples.interpolation.rbf",
+    "examples.interpolation.griddata",
     # 高斯过程回归
     "examples.gpr.gpr_basic",
     "examples.gpr.gpr_hyperparameters",
     "examples.gpr.gpr_uncertain_inputs",
     # 生成模型
-    "examples.mnist_generative.mnist_diffusion",
-    "examples.mnist_generative.pixelcnn_mnist",
-    "examples.mnist_generative.vqvae_mnist",
+    "examples.diffusion.train",
+    "examples.pixelcnn.train",
+    "examples.vqvae.train",
     # 时序 Transformer 与 Moving MNIST
-    "examples.temporal_transformer.temporal_transformer",
-    "examples.temporal_transformer.generate_moving_mnist",
-    "examples.temporal_transformer.visualize_moving_mnist",
+    "examples.moving_mnist.generate",
+    "examples.moving_mnist.visualize",
+    "examples.transformer.train",
     # DeepONet
     "examples.deeponet.config",
     "examples.deeponet.dataload",

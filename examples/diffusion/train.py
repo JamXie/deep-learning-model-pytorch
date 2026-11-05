@@ -6,7 +6,7 @@
   - 采样时从纯噪声出发，分多步逐步向网络预测结果靠拢。
 
 运行方式（在仓库根目录，首次运行会自动下载 MNIST）：
-    python -m examples.mnist_generative.mnist_diffusion --epochs 5
+    python -m examples.diffusion.train --epochs 5
 """
 
 from __future__ import annotations
@@ -107,7 +107,7 @@ def main(argv: list[str] | None = None) -> None:
 
     set_seed(args.seed)
     device = get_device(args.device)
-    output_dir = resolve_output_dir(args.output_dir, "mnist_generative")
+    output_dir = resolve_output_dir(args.output_dir, "diffusion")
     data_root = Path(args.data_root).expanduser() if args.data_root else resolve_data_path("mnist")
 
     train_loader = build_loader(data_root, args.batch_size, train=True)

@@ -5,7 +5,7 @@ from __future__ import annotations
 import numpy as np
 import torch
 
-from examples.temporal_transformer.generate_moving_mnist import generate_sequence
+from examples.moving_mnist.generate import generate_sequence
 
 
 def _synthetic_digit(size: int = 8) -> torch.Tensor:

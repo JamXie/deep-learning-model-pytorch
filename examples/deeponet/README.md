@@ -60,7 +60,7 @@ python -m examples.deeponet.validation --task 1d --split extra
 
 ## 说明
 
-- Excel 的 sheet 约定见 `docs/DATA.md`；`load_from_excel` 同时支持
+- Excel 的 sheet 约定见 [`data/README.md`](../../data/README.md)；`load_from_excel` 同时支持
   `u_function` 与 `f_function`。
 - 积分使用 `scipy.integrate.trapezoid`（`np.trapz` 已在 NumPy 2.x 中移除）。
 - 原工程附带的 DeepXDE 源码树未收录，也不重新分发。
