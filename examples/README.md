@@ -47,6 +47,10 @@
 | [`deeponet/`](deeponet/) | DeepONet + FNN 基线；一维积分、二维单摆、一维扩散 | 见目录 README |
 | [`sciml_crash/`](sciml_crash/) | PINN → 碰撞算子 → PINO 微调 | 见目录 README |
 
+第 5 章的 Beta-CVAE 2D Grid 连续三维变形与应力预测已整理为独立仓库：
+[JamXie/beta-cvae-2dgrid](https://github.com/JamXie/beta-cvae-2dgrid)，
+包含合成数据冒烟流程、真实有限元 CSV 转换与 Beta/条件模式/结构消融脚本。
+
 ## 通用约定
 
 - 所有入口都在仓库根目录以 `python -m ...` 运行；
